@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remmy Tumo | Software Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #0f172a;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .gradient-bg {
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+        }
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);
+        }
+        .skill-pill {
+            transition: all 0.3s ease;
+        }
+        .skill-pill:hover {
+            transform: scale(1.05);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .active::after {
+            width: 100%;
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-slate-900/90 backdrop-blur-sm z-50 border-b border-slate-800">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold gradient-text">RT</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-white hover:text-blue-400 transition-colors active">Home</a>
+                <a href="#about" class="nav-link text-white hover:text-blue-400 transition-colors">About</a>
+                <a href="#skills" class="nav-link text-white hover:text-blue-400 transition-colors">Skills</a>
+                <a href="#projects" class="nav-link text-white hover:text-blue-400 transition-colors">Projects</a>
+                <a href="#contact" class="nav-link text-white hover:text-blue-400 transition-colors">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="#home" class="text-white hover:text-blue-400 py-2 transition-colors">Home</a>
+                <a href="#about" class="text-white hover:text-blue-400 py-2 transition-colors">About</a>
+                <a href="#skills" class="text-white hover:text-blue-400 py-2 transition-colors">Skills</a>
+                <a href="#projects" class="text-white hover:text-blue-400 py-2 transition-colors">Projects</a>
+                <a href="#contact" class="text-white hover:text-blue-400 py-2 transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-16 pb-20 px-4">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 opacity-0 animate-fade-in">
+                    <p class="text-blue-400 font-medium mb-2">Hello, I'm</p>
+                    <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Remmy Tumo</h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold gradient-text mb-6">Software Engineer</h2>
+                    <p class="text-slate-300 text-lg mb-8 max-w-lg">
+                        Based in Kericho, Kenya. I craft elegant solutions to complex problems with clean, efficient code.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="gradient-bg text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity">
+                            Get In Touch
+                        </a>
+                        <a href="#projects" class="bg-slate-800 text-white px-6 py-3 rounded-lg font-medium hover:bg-slate-700 transition-colors">
+                            View Projects
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center opacity-0 animate-fade-in delay-200">
+                    <div class="relative">
+                        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-blue-500/20 flex items-center justify-center">
+                            <svg class="w-48 h-48 md:w-64 md:h-64 text-blue-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M20 21C20 16.5817 16.4183 13 12 13C7.58172 13 4 16.5817 4 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 bg-slate-800 p-3 rounded-full border-4 border-slate-900">
+                            <svg class="w-8 h-8 text-blue-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17 7.82959L18.6965 9.35641C20.239 10.7447 21.0103 11.4389 21.0103 12.3296C21.0103 13.2203 20.239 13.9145 18.6965 15.3028L17 16.8296" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M13.9868 5L10.0132 19.8297" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M7.00005 7.82959L5.30358 9.35641C3.76102 10.7447 2.98975 11.4389 2.98975 12.3296C2.98975 13.2203 3.76102 13.9145 5.30358 15.3028L7.00005 16.8296" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-slate-800/50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 opacity-0 animate-fade-in">
+                <h2 class="text-3xl font-bold text-white mb-2">About Me</h2>
+                <div class="w-20 h-1 gradient-bg mx-auto rounded-full"></div>
+            </div>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 opacity-0 animate-fade-in delay-100">
+                    <div class="bg-slate-700/50 p-6 rounded-2xl border border-slate-600/50 relative">
+                        <div class="absolute -top-3 -left-3 w-10 h-10 gradient-bg rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-4 mt-2">Who I Am</h3>
+                        <p class="text-slate-300 mb-4">
+                            I'm a passionate software engineer based in Kericho, Kenya with expertise in building robust and scalable applications. 
+                            I enjoy solving complex problems and creating intuitive user experiences.
+                        </p>
+                        <p class="text-slate-300">
+                            With a strong foundation in both frontend and backend technologies, I strive to create 
+                            efficient, maintainable code that delivers real value to users and businesses alike.
+                        </p>
+                    </div>
+                </div>
+                <div class="md:w-1/2 md:pl-10 opacity-0 animate-fade-in delay-200">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-slate-700/50 p-6 rounded-2xl border border-slate-600/50 hover:border-blue-400/50 transition-colors">
+                            <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mb-4">
+                                <i class="fas fa-graduation-cap text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold text-white mb-2">Education</h3>
+                            <p class="text-slate-300">BSc in Computer Science</p>
+                            <p class="text-blue-400">University of Nairobi</p>
+                        </div>
+                        <div class="bg-slate-700/50 p-6 rounded-2xl border border-slate-600/50 hover:border-blue-400/50 transition-colors">
+                            <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mb-4">
+                                <i class="fas fa-briefcase text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold text-white mb-2">Experience</h3>
+                            <p class="text-slate-300">5+ Years</p>
+                            <p class="text-blue-400">Professional Experience</p>
+                        </div>
+                        <div class="bg-slate-700/50 p-6 rounded-2xl border border-slate-600/50 hover:border-blue-400/50 transition-colors">
+                            <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mb-4">
+                                <i class="fas fa-code-branch text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold text-white mb-2">Projects</h3>
+                            <p class="text-slate-300">20+ Completed</p>
+                            <p class="text-blue-400">Various Domains</p>
+                        </div>
+                        <div class="bg-slate-700/50 p-6 rounded-2xl border border-slate-600/50 hover:border-blue-400/50 transition-colors">
+                            <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mb-4">
+                                <i class="fas fa-map-marker-alt text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold text-white mb-2">Location</h3>
+                            <p class="text-slate-300">Kericho</p>
+                            <p class="text-blue-400">Kenya</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 opacity-0 animate-fade-in">
+                <h2 class="text-3xl font-bold text-white mb-2">My Skills</h2>
+                <div class="w-20 h-1 gradient-bg mx-auto rounded-full"></div>
+                <p class="text-slate-300 mt-4 max-w-2xl mx-auto">
+                    I've worked with a variety of technologies and frameworks to create efficient and scalable solutions.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="opacity-0 animate-fade-in delay-100">
+                    <h3 class="text-xl font-semibold text-white mb-6 flex items-center">
+                        <span class="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-code text-white"></i>
+                        </span>
+                        Frontend Development
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white">HTML/CSS</span>
+                                <span class="text-blue-400">95%</span>
+                            </div>
+                            <div class="w-full bg-slate-700 rounded-full h-2">
+                                <div class="gradient-bg h-2 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white">JavaScript</span>
+                                <span class="text-blue-400">90%</span>
+                            </div>
+                            <div class="w-full bg-slate-700 rounded-full h-2">
+                                <div class="gradient-bg h-2 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white">React</span>
+                                <span class="text-blue-400">85%</span>
+                            </div>
+                            <div class="w-full bg-slate-700 rounded-full h-2">
+                                <div class="gradient-bg h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white">Vue.js</span>
+                                <span class="text-blue-400">80%</span>
+                            </div>
+                            <div class="w-full bg-slate-700 rounded-full h-2">
+                                <div class="gradient-bg h-2 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white">Tailwind CSS</span>
+                                <span class="text-blue-400">90%</span>
+                            </div>
+                            <div class="w-full bg-slate-700 rounded-full h-2">
+                                <div class="gradient-bg h-2 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="opacity-0 animate-fade-in delay-200">
+                    <h3 class="text-xl font-semibold text-white mb-6 flex items-center">
+                        <span class="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-server text-white"></i>
+                        </span>
+                        Backend Development
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white">Node.js</span>
+                                <span class="text-blue-400">85%</span>
+                            </div>
+                            <div class="w-full bg-slate-700 rounded-full h-2">
+                                <div class="gradient-bg h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white">Python</span>
+                                <span class="text-blue-400">80%</span>
+                            </div>
+                            <div class="w-full bg-slate-700 rounded-full h-2">
+                                <div class="gradient-bg h-2 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white">MongoDB</span>
+                                <span class="text-blue-400">85%</span>
+                            </div>
+                            <div class="w-full bg-slate-700 rounded-full h-2">
+                                <div class="gradient-bg h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white">SQL</span>
+                                <span class="text-blue-400">75%</span>
+                            </div>
+                            <div class="w-full bg-slate-700 rounded-full h-2">
+                                <div class="gradient-bg h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-white">Express.js</span>
+                                <span class="text-blue-400">90%</span>
+                            </div>
+                            <div class="w-full bg-slate-700 rounded-full h-2">
+                                <div class="gradient-bg h-2 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 opacity-0 animate-fade-in delay-300">
+                <h3 class="text-xl font-semibold text-white mb-6 flex items-center">
+                    <span class="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-tools text-white"></i>
+                    </span>
+                    Other Skills
+                </h3>
+                <div class="flex flex-wrap gap-3">
+                    <span class="skill-pill bg-slate-700 text-white px-4 py-2 rounded-full border border-slate-600 hover:border-blue-400 transition-colors">Git</span>
+                    <span class="skill-pill bg-slate-700 text-white px-4 py-2 rounded-full border border-slate-600 hover:border-blue-400 transition-colors">Docker</span>
+                    <span class="skill-pill bg-slate-700 text-white px-4 py-2 rounded-full border border-slate-600 hover:border-blue-400 transition-colors">AWS</span>
+                    <span class="skill-pill bg-slate-700 text-white px-4 py-2 rounded-full border border-slate-600 hover:border-blue-400 transition-colors">CI/CD</span>
+                    <span class="skill-pill bg-slate-700 text-white px-4 py-2 rounded-full border border-slate-600 hover:border-blue-400 transition-colors">RESTful APIs</span>
+                    <span class="skill-pill bg-slate-700 text-white px-4 py-2 rounded-full border border-slate-600 hover:border-blue-400 transition-colors">GraphQL</span>
+                    <span class="skill-pill bg-slate-700 text-white px-4 py-2 rounded-full border border-slate-600 hover:border-blue-400 transition-colors">Agile</span>
+                    <span class="skill-pill bg-slate-700 text-white px-4 py-2 rounded-full border border-slate-600 hover:border-blue-400 transition-colors">UI/UX Design</span>
+                    <span class="skill-pill bg-slate-700 text-white px-4 py-2 rounded-full border border-slate-600 hover:border-blue-400 transition-colors">Testing</span>
+                    <span class="skill-pill bg-slate-700 text-white px-4 py-2 rounded-full border border-slate-600 hover:border-blue-400 transition-colors">Responsive Design</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-slate-800/50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 opacity-0 animate-fade-in">
+                <h2 class="text-3xl font-bold text-white mb-2">My Projects</h2>
+                <div class="w-20 h-1 gradient-bg mx-auto rounded-full"></div>
+                <p class="text-slate-300 mt-4 max-w-2xl mx-auto">
+                    Here are some of my recent projects that showcase my skills and expertise.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-slate-700/50 rounded-xl overflow-hidden border border-slate-600/50 opacity-0 animate-fade-in delay-100">
+                    <div class="h-48 bg-slate-600 flex items-center justify-center">
+                        <svg class="w-20 h-20 text-blue-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 9.5L12 4L21 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M19 13V19.4C19 19.7314 18.7314 20 18.4 20H5.6C5.26863 20 5 19.7314 5 19.4V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M10 20V14H14V20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-white mb-2">E-Commerce Platform</h3>
+                        <p class="text-slate-300 mb-4">
+                            A full-stack e-commerce solution with product management, user authentication, and payment processing.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">React</span>
+                            <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Node.js</span>
+                            <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">MongoDB</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <button class="text-blue-400 hover:text-blue-300 transition-colors" onclick="showProjectDetails('ecommerce')">
+                                View Details
+                            </button>
+                            <a href="#" class="text-slate-300 hover:text-white transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-slate-700/50 rounded-xl overflow-hidden border border-slate-600/50 opacity-0 animate-fade-in delay-200">
+                    <div class="h-48 bg-slate-600 flex items-center justify-center">
+                        <svg class="w-20 h-20 text-blue-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M3 16.8V7.2C3 6.0799 3 5.51984 3.21799 5.09202C3.40973 4.71569 3.71569 4.40973 4.09202 4.21799C4.51984 4 5.0799 4 6.2 4H17.8C18.9201 4 19.4802 4 19.908 4.21799C20.2843 4.40973 20.5903 4.71569 20.782 5.09202C21 5.51984 21 6.0799 21 7.2V16.8C21 17.9201 21 18.4802 20.782 18.908C20.5903 19.2843 20.2843 19.5903 19.908 19.782C19.4802 20 18.9201 20 17.8 20H6.2C5.0799 20 4.51984 20 4.09202 19.782C3.71569 19.5903 3.40973 19.2843 3.21799 18.908C3 18.4802 3 17.9201 3 16.8Z" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M17 7H17.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-white mb-2">Photo Sharing App</h3>
+                        <p class="text-slate-300 mb-4">
+                            A social media platform for photographers with image filters, comments, and user profiles.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Vue.js</span>
+                            <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Express</span>
+                            <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">PostgreSQL</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <button class="text-blue-400 hover:text-blue-300 transition-colors" onclick="showProjectDetails('photosharing')">
+                                View Details
+                            </button>
+                            <a href="#" class="text-slate-300 hover:text-white transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-slate-700/50 rounded-xl overflow-hidden border border-slate-600/50 opacity-0 animate-fade-in delay-300">
+                    <div class="h-48 bg-slate-600 flex items-center justify-center">
+                        <svg class="w-20 h-20 text-blue-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M3.6 8.5H20.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M3.6 15.5H20.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M12 3C10.4308 5.33333 9.64624 7.66667 9.64624 10C9.64624 12.3333 10.4308 14.6667 12 17C13.5692 14.6667 14.3538 12.3333 14.3538 10C14.3538 7.66667 13.5692 5.33333 12 3Z" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-white mb-2">Travel Planner</h3>
+                        <p class="text-slate-300 mb-4">
+                            An application for planning trips with itinerary management, maps integration, and budget tracking.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">React Native</span>
+                            <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Firebase</span>
+                            <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Google Maps API</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <button class="text-blue-400 hover:text-blue-300 transition-colors" onclick="showProjectDetails('travelplanner')">
+                                View Details
+                            </button>
+                            <a href="#" class="text-slate-300 hover:text-white transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card bg-slate-700/50 rounded-xl overflow-hidden border border-slate-600/50 opacity-0 animate-fade-in delay-400">
+                    <div class="h-48 bg-slate-600 flex items-center justify-center">
+                        <svg class="w-20 h-20 text-blue-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 7V12L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M5.5 12C5.5 8.41015 8.41015 5.5 12 5.5C15.5899 5.5 18.5 8.41015 18.5 12C18.5 15.5899 15.5899 18.5 12 18.5C8.41015 18.5 5.5 15.5899 5.5 12Z" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M16.5 7.5V7C16.5 4.51472 14.4853 2.5 12 2.5C9.51472 2.5 7.5 4.51472 7.5 7V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M7.5 16.5V17C7.5 19.4853 9.51472 21.5 12 21.5C14.4853 21.5 16.5 19.4853 16.5 17V16.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-white mb-2">Task Management System</h3>
+                        <p class="text-slate-300 mb-4">
+                            A productivity tool for teams with task assignment, progress tracking, and deadline notifications.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Angular</span>
+                            <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Django</span>
+                            <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">PostgreSQL</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <button class="text-blue-400 hover:text-blue-300 transition-colors" onclick="showProjectDetails('taskmanagement')">
+                                View Details
+                            </button>
+                            <a href="#" class="text-slate-300 hover:text-white transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="project-card bg-slate-700/50 rounded-xl overflow-hidden border border-slate-600/50 opacity-0 animate-fade-in delay-500">
+                    <div class="h-48 bg-slate-600 flex items-center justify-center">
+                        <svg class="w-20 h-20 text-blue-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 9.5L12 4L21 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M5 20H19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M10 9L14 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M10 13L14 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M10 17L14 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M7 20V9.5C7 8.67157 7.67157 8 8.5 8H15.5C16.3284 8 17 8.67157 17 9.5V20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-white mb-2">Real Estate Marketplace</h3>
+                        <p class="text-slate-300 mb-4">
+                            A platform for buying, selling, and renting properties with search filters and virtual tours.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Next.js</span>
+                            <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Node.js</span>
+                            <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">MongoDB</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <button class="text-blue-400 hover:text-blue-300 transition-colors" onclick="showProjectDetails('realestate')">
+                                View Details
+                            </button>
+                            <a href="#" class="text-slate-300 hover:text-white transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="project-card bg-slate-700/50 rounded-xl overflow-hidden border border-slate-600/50 opacity-0 animate-fade-in delay-500">
+                    <div class="h-48 bg-slate-600 flex items-center justify-center">
+                        <svg class="w-20 h-20 text-blue-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 8V12L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16.5 11.5C16.5 9.01472 14.4853 7 12 7C9.51472 7 7.5 9.01472 7.5 11.5C7.5 13.9853 9.51472 16 12 16C12.7002 16 13.3577 15.8474 13.9351 15.5751" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M3 3L21 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-white mb-2">Health Monitoring App</h3>
+                        <p class="text-slate-300 mb-4">
+                            A mobile application for tracking health metrics, setting goals, and receiving personalized insights.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Flutter</span>
+                            <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Firebase</span>
+                            <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Machine Learning</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <button class="text-blue-400 hover:text-blue-300 transition-colors" onclick="showProjectDetails('healthapp')">
+                                View Details
+                            </button>
+                            <a href="#" class="text-slate-300 hover:text-white transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 opacity-0 animate-fade-in">
+                <h2 class="text-3xl font-bold text-white mb-2">Get In Touch</h2>
+                <div class="w-20 h-1 gradient-bg mx-auto rounded-full"></div>
+                <p class="text-slate-300 mt-4 max-w-2xl mx-auto">
+                    Have a project in mind or want to discuss potential opportunities? Feel free to reach out!
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-10">
+                <div class="md:w-1/2 opacity-0 animate-fade-in delay-100">
+                    <div class="bg-slate-700/50 p-8 rounded-2xl border border-slate-600/50">
+                        <h3 class="text-xl font-semibold text-white mb-6">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 gradient-bg rounded-lg flex items-center justify-center mr-4 shrink-0">
+                                    <i class="fas fa-envelope text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="text-slate-300 mb-1">Email</p>
+                                    <a href="mailto:remmy.tumo@example.com" class="text-blue-400 hover:text-blue-300 transition-colors">kiprutotumo@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 gradient-bg rounded-lg flex items-center justify-center mr-4 shrink-0">
+                                    <i class="fas fa-phone text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="text-slate-300 mb-1">Phone</p>
+                                    <a href="tel:+254712345678" class="text-blue-400 hover:text-blue-300 transition-colors">+254 720 942 244</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 gradient-bg rounded-lg flex items-center justify-center mr-4 shrink-0">
+                                    <i class="fas fa-map-marker-alt text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="text-slate-300 mb-1">Location</p>
+                                    <p class="text-white">Kericho, Kenya</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-xl font-semibold text-white mt-10 mb-6">Social Media</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 bg-slate-600 hover:bg-blue-500 transition-colors rounded-full flex items-center justify-center text-white">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-slate-600 hover:bg-blue-500 transition-colors rounded-full flex items-center justify-center text-white">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-slate-600 hover:bg-blue-500 transition-colors rounded-full flex items-center justify-center text-white">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-slate-600 hover:bg-blue-500 transition-colors rounded-full flex items-center justify-center text-white">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 opacity-0 animate-fade-in delay-200">
+                    <div class="bg-slate-700/50 p-8 rounded-2xl border border-slate-600/50">
+                        <h3 class="text-xl font-semibold text-white mb-6">Send Me a Message</h3>
+                        <form id="contact-form" class="contact-form space-y-6">
+                            <div>
+                                <label for="name" class="block text-slate-300 mb-2">Name</label>
+                                <input type="text" id="name" class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Your name">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-slate-300 mb-2">Email</label>
+                                <input type="email" id="email" class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Your email">
+                            </div>
+                            <div>
+                                <label for="subject" class="block text-slate-300 mb-2">Subject</label>
+                                <input type="text" id="subject" class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Subject">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-slate-300 mb-2">Message</label>
+                                <textarea id="message" rows="5" class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Your message"></textarea>
+                            </div>
+                            <button type="submit" class="gradient-bg text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity w-full">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-slate-900 border-t border-slate-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-slate-300">&copy; 2025 Remmy Tumo. All rights reserved.</p>
+                </div>
+                <div>
+                    <a href="#home" class="text-blue-400 hover:text-blue-300 transition-colors">Back to Top <i class="fas fa-arrow-up ml-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Details Modal -->
+    <div id="project-modal" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-800 rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-slate-700 flex justify-between items-center">
+                <h3 id="modal-title" class="text-2xl font-bold text-white"></h3>
+                <button id="close-modal" class="text-slate-400 hover:text-white transition-colors">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <div id="modal-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Active navigation link highlighting
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Animation on scroll
+        const animateElements = document.querySelectorAll('.animate-fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Contact form submission (demo)
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            if (name && email && subject && message) {
+                alert('Thank you for your message! This is a demo form, so no actual message was sent.');
+                this.reset();
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+
+        // Project details modal
+        const projectDetails = {
+            ecommerce: {
+                title: "E-Commerce Platform",
+                description: "A comprehensive e-commerce solution built with React, Node.js, and MongoDB. This platform features product management, user authentication, shopping cart functionality, and secure payment processing.",
+                features: [
+                    "User authentication and authorization",
+                    "Product catalog with search and filtering",
+                    "Shopping cart and checkout process",
+                    "Payment gateway integration",
+                    "Order tracking and history",
+                    "Admin dashboard for inventory management"
+                ],
+                technologies: ["React", "Redux", "Node.js", "Express", "MongoDB", "JWT", "Stripe API"],
+                challenges: "One of the main challenges was implementing a secure payment system while ensuring a smooth user experience. I solved this by creating a streamlined checkout process with proper validation and error handling."
+            },
+            photosharing: {
+                title: "Photo Sharing App",
+                description: "A social media platform for photographers to share their work, connect with others, and receive feedback. Built with Vue.js, Express, and PostgreSQL.",
+                features: [
+                    "User profiles and portfolios",
+                    "Image upload with filters and editing tools",
+                    "Social features (likes, comments, follows)",
+                    "Discover feed with personalized recommendations",
+                    "Notifications system",
+                    "Analytics dashboard for creators"
+                ],
+                technologies: ["Vue.js", "Vuex", "Express", "PostgreSQL", "AWS S3", "Socket.io", "Canvas API"],
+                challenges: "Handling large image files efficiently was a significant challenge. I implemented client-side compression and a chunked upload system to improve performance."
+            },
+            travelplanner: {
+                title: "Travel Planner",
+                description: "A mobile application for planning trips with itinerary management, maps integration, and budget tracking. Built with React Native and Firebase.",
+                features: [
+                    "Trip itinerary creation and management",
+                    "Interactive maps with points of interest",
+                    "Budget tracking and expense categorization",
+                    "Weather forecasts for destinations",
+                    "Offline access to saved itineraries",
+                    "Sharing capabilities for group trips"
+                ],
+                technologies: ["React Native", "Firebase", "Google Maps API", "OpenWeatherMap API", "Redux", "Expo"],
+                challenges: "Ensuring the app worked offline was crucial for travelers. I implemented a robust caching system and local storage solution to allow users to access their itineraries without an internet connection."
+            },
+            taskmanagement: {
+                title: "Task Management System",
+                description: "A productivity tool for teams with task assignment, progress tracking, and deadline notifications. Built with Angular, Django, and PostgreSQL.",
+                features: [
+                    "Project and task organization",
+                    "Team member assignment and workload balancing",
+                    "Progress tracking with Kanban boards",
+                    "Deadline notifications and reminders",
+                    "Time tracking and reporting",
+                    "Integration with calendar applications"
+                ],
+                technologies: ["Angular", "NgRx", "Django", "Django REST Framework", "PostgreSQL", "Celery", "WebSockets"],
+                challenges: "Creating a real-time collaboration system was complex. I implemented WebSockets to ensure all team members could see updates instantly without refreshing the page."
+            },
+            realestate: {
+                title: "Real Estate Marketplace",
+                description: "A platform for buying, selling, and renting properties with search filters and virtual tours. Built with Next.js, Node.js, and MongoDB.",
+                features: [
+                    "Advanced property search with multiple filters",
+                    "Virtual tours and 3D property visualization",
+                    "Mortgage calculator and financing options",
+                    "Agent profiles and direct messaging",
+                    "Saved searches and property alerts",
+                    "Listing management for property owners"
+                ],
+                technologies: ["Next.js", "Node.js", "Express", "MongoDB", "Three.js", "MapBox API", "Cloudinary"],
+                challenges: "Implementing the virtual tour feature required optimizing 3D models for web performance. I used progressive loading techniques and level-of-detail adjustments to ensure smooth experiences even on lower-end devices."
+            },
+            healthapp: {
+                title: "Health Monitoring App",
+                description: "A mobile application for tracking health metrics, setting goals, and receiving personalized insights. Built with Flutter and Firebase.",
+                features: [
+                    "Health metrics tracking (steps, sleep, nutrition)",
+                    "Goal setting and progress visualization",
+                    "Personalized insights and recommendations",
+                    "Integration with wearable devices",
+                    "Reminder system for medications and activities",
+                    "Secure health data storage and sharing options"
+                ],
+                technologies: ["Flutter", "Firebase", "TensorFlow Lite", "HealthKit/Google Fit APIs", "Cloud Functions", "Firestore"],
+                challenges: "Privacy and security were paramount for health data. I implemented end-to-end encryption and granular permission controls to ensure users maintained ownership of their sensitive information."
+            }
+        };
+
+        function showProjectDetails(projectId) {
+            const project = projectDetails[projectId];
+            if (!project) return;
+            
+            document.getElementById('modal-title').textContent = project.title;
+            
+            let content = `
+                <p class="text-slate-300 mb-6">${project.description}</p>
+                
+                <h4 class="text-lg font-semibold text-white mb-3">Key Features</h4>
+                <ul class="list-disc pl-5 mb-6 text-slate-300">
+                    ${project.features.map(feature => `<li class="mb-1">${feature}</li>`).join('')}
+                </ul>
+                
+                <h4 class="text-lg font-semibold text-white mb-3">Technologies Used</h4>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    ${project.technologies.map(tech => `<span class="text-sm bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full">${tech}</span>`).join('')}
+                </div>
+                
+                <h4 class="text-lg font-semibold text-white mb-3">Challenges & Solutions</h4>
+                <p class="text-slate-300">${project.challenges}</p>
+            `;
+            
+            document.getElementById('modal-content').innerHTML = content;
+            document.getElementById('project-modal').classList.remove('hidden');
+        }
+
+        document.getElementById('close-modal').addEventListener('click', function() {
+            document.getElementById('project-modal').classList.add('hidden');
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('project-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.add('hidden');
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9686b0d7922a65e8',t:'MTc1NDA2NTUxOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
